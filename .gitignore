@@ -1,0 +1,18 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Firebase (archivos locales de la CLI)
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Entorno
+.env
+.env.*
+
+# Dependencias (no se usan en este proyecto)
+node_modules/
+
+.vscode/
