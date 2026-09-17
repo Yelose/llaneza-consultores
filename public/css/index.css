@@ -32,6 +32,7 @@ body > div:has(> picture) > header > a {
     gap: var(--space-xs);
     font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
     font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
 }
 
 body > div:has(> picture) > header > a img {
@@ -44,6 +45,7 @@ body > div:has(> picture) > header nav > ul {
 
 body > div:has(> picture) > header nav a {
     font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.375rem);
+    color: #000000;
 }
 
 @media (min-width: 48rem) {
@@ -66,15 +68,15 @@ body > div:has(> picture) > section {
 }
 
 body > div:has(> picture) h1 {
-    font-size: clamp(2.25rem, 6vw, 4.25rem);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     line-height: 1.15;
-    color: var(--color-primary);
+    color: #000000;
 }
 
 body > div:has(> picture) > section > p {
     font-size: clamp(1.125rem, 2.2vw, 1.5rem);
-    color: var(--color-primary);
-    max-inline-size: 40rem;
+    color: #000000;
+    max-inline-size: 60rem;
 }
 
 body > div:has(> picture) > section > a[data-type="primary"] {
@@ -138,7 +140,7 @@ main > section[aria-labelledby="inicio-servicios"] article a {
 }
 
 main > section[aria-labelledby="inicio-servicios"] article img {
-    inline-size: 12rem;
+    inline-size: 14rem;
     block-size: auto;
 }
 
@@ -166,18 +168,39 @@ main > section[aria-labelledby="inicio-gestiones"] {
     align-items: center;
     gap: var(--space-l);
     padding-block: var(--space-xl);
+    position: relative;
+    background-color: var(--color-background);
+    color: #000000;
+}
+
+main > section[aria-labelledby="inicio-gestiones"]::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    inset-block-end: 1.5rem;
+    inline-size: 1.25rem;
+    background: linear-gradient(to right, var(--color-primary) 0 0.25rem, transparent 0.25rem 0.625rem, var(--color-primary) 0.625rem 0.875rem, transparent 0.875rem 100%);
+}
+
+main > section[aria-labelledby="inicio-gestiones"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 1.5rem;
     background-color: var(--color-primary);
-    color: var(--color-background);
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > h2 {
-    color: var(--color-background);
+    color: var(--color-primary);
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > p {
     inline-size: 100%;
     line-height: 1.7;
     text-align: center;
+    color: #000000;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > div {
@@ -200,11 +223,12 @@ main > section[aria-labelledby="inicio-gestiones"] article {
     gap: var(--space-s);
     padding: var(--space-l);
     background-color: var(--color-background);
+    border: 0.0625rem solid var(--color-border);
     block-size: 100%;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] article img {
-    inline-size: 12rem;
+    inline-size: 14rem;
     block-size: auto;
 }
 
