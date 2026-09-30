@@ -45,7 +45,6 @@
 
 html {
     font-size: 100%;
-    background-color: var(--color-tertiary);
 }
 
 body {
@@ -150,8 +149,12 @@ header {
     position: sticky;
     inset-block-start: 0;
     z-index: 10;
-    background-color: transparent;
+    background-color: var(--color-background);
     transition: background-color var(--transition-medium);
+}
+
+body:has(> div > picture) > header {
+    background-color: transparent;
 }
 
 header.is-scrolled {
