@@ -288,12 +288,12 @@ footer > * {
 
 @media (min-width: 48rem) {
     footer {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 footer h2 {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: var(--font-weight-medium);
     color: var(--color-background);
 }
@@ -304,6 +304,17 @@ footer ul {
     gap: var(--space-3xs);
     list-style: none;
     padding: 0;
+}
+
+footer li span {
+    display: block;
+}
+
+footer li,
+footer address,
+footer address p,
+footer a[href] {
+    font-size: 1rem;
 }
 
 footer address {

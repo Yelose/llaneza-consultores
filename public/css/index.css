@@ -33,10 +33,12 @@ body > div:has(> picture) > header > a {
     font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
+    transform: translateY(0.125rem);
 }
 
 body > div:has(> picture) > header > a img {
     max-height: 1.75rem;
+    transform: translateY(-0.125rem);
 }
 
 body > div:has(> picture) > header nav > ul {
@@ -46,6 +48,20 @@ body > div:has(> picture) > header nav > ul {
 body > div:has(> picture) > header nav a {
     font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.375rem);
     color: #000000;
+}
+
+body > div:has(> picture) > header nav a[aria-current="page"] {
+    font-weight: var(--font-weight-regular);
+    color: #000000;
+}
+
+body > div:has(> picture) > header nav a[aria-current="page"]:hover {
+    color: var(--color-secondary);
+}
+
+body > div:has(> picture) > header nav > ul > li > a[aria-current="page"]:not(:hover)::after {
+    border-inline-start-color: transparent;
+    background-size: 0 0.125rem;
 }
 
 @media (min-width: 48rem) {
@@ -89,7 +105,8 @@ main {
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
-    padding-block: var(--space-l);
+    padding-block-start: var(--space-xs);
+    padding-block-end: var(--space-l);
 }
 
 main section {
@@ -105,8 +122,34 @@ main h3 {
 }
 
 main > section[aria-labelledby="inicio-servicios"] {
-    gap: var(--space-s);
-    padding-block: var(--space-xl);
+    gap: var(--space-2xs);
+    padding-block-start: 0;
+    padding-block-end: calc(var(--space-2xl) + var(--space-xl) - var(--space-s) - var(--space-2xs));
+    position: relative;
+}
+
+main > section[aria-labelledby="inicio-servicios"] > h2 {
+    padding-block-start: calc(var(--space-l) + var(--space-2xs));
+    padding-block-end: var(--space-2xs);
+}
+
+main > section[aria-labelledby="inicio-servicios"]::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: -0.75rem;
+    inset-block-end: 2rem;
+    inline-size: 2.375rem;
+    background: linear-gradient(to right, var(--color-primary) 0 1rem, transparent 1rem 1.375rem, var(--color-primary) 1.375rem 2.375rem, transparent 2.375rem 100%);
+}
+
+main > section[aria-labelledby="inicio-servicios"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1rem;
+    block-size: 3rem;
+    background-color: var(--color-primary);
 }
 
 main > section[aria-labelledby="inicio-servicios"] > div {
@@ -126,14 +169,14 @@ main > section[aria-labelledby="inicio-servicios"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-m);
+    gap: var(--space-2xs);
 }
 
 main > section[aria-labelledby="inicio-servicios"] article a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-s);
+    gap: var(--space-2xs);
     color: var(--color-primary);
     text-decoration: none;
     text-align: center;
@@ -166,30 +209,11 @@ main > section[aria-labelledby="inicio-gestiones"] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-l);
-    padding-block: var(--space-xl);
+    gap: var(--space-s);
+    padding-block: var(--space-l);
     position: relative;
     background-color: var(--color-background);
     color: #000000;
-}
-
-main > section[aria-labelledby="inicio-gestiones"]::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block-start: 0;
-    inset-block-end: 1.5rem;
-    inline-size: 1.25rem;
-    background: linear-gradient(to right, var(--color-primary) 0 0.25rem, transparent 0.25rem 0.625rem, var(--color-primary) 0.625rem 0.875rem, transparent 0.875rem 100%);
-}
-
-main > section[aria-labelledby="inicio-gestiones"]::after {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    inset-block-end: 0;
-    block-size: 1.5rem;
-    background-color: var(--color-primary);
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > h2 {
@@ -206,7 +230,7 @@ main > section[aria-labelledby="inicio-gestiones"] > p {
 main > section[aria-labelledby="inicio-gestiones"] > div {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-l);
+    gap: var(--space-m);
     inline-size: 100%;
 }
 
@@ -220,15 +244,15 @@ main > section[aria-labelledby="inicio-gestiones"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-s);
-    padding: var(--space-l);
+    gap: var(--space-xs);
+    padding: var(--space-m);
     background-color: var(--color-background);
     border: 0.0625rem solid var(--color-border);
     block-size: 100%;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] article img {
-    inline-size: 14rem;
+    inline-size: 8rem;
     block-size: auto;
 }
 
@@ -250,10 +274,32 @@ main > section[aria-labelledby="inicio-quienes-somos"] {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-l);
-    padding-block-start: var(--space-xl);
-    padding-block-end: var(--space-l);
+    justify-content: space-evenly;
+    gap: 0;
+    padding-block-start: 0;
+    padding-block-end: 3rem;
+    position: relative;
     text-align: center;
+    block-size: 100dvh;
+}
+
+main > section[aria-labelledby="inicio-quienes-somos"]::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    inset-block-end: 3rem;
+    inline-size: 2.375rem;
+    background: linear-gradient(to right, var(--color-primary) 0 1rem, transparent 1rem 1.375rem, var(--color-primary) 1.375rem 2.375rem, transparent 2.375rem 100%);
+}
+
+main > section[aria-labelledby="inicio-quienes-somos"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 3rem;
+    background-color: var(--color-primary);
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] > h2,
@@ -261,6 +307,7 @@ main > section[aria-labelledby="inicio-quienes-somos"] > p {
     inline-size: 100%;
     max-inline-size: none;
     text-align: center;
+    padding-block-end: 0;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] > p {
@@ -274,14 +321,6 @@ main > section[aria-labelledby="inicio-quienes-somos"] > p {
 
 main > section[aria-labelledby="inicio-quienes-somos"] > a {
     align-self: center;
-}
-
-@media (min-width: 48rem) {
-    main > section[aria-labelledby="inicio-quienes-somos"] {
-        gap: var(--space-xl);
-        padding-block-start: var(--space-2xl);
-        padding-block-end: var(--space-l);
-    }
 }
 
 main section:has(> article) {
@@ -307,17 +346,16 @@ main > section[aria-labelledby="inicio-cta"] {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-l);
+    justify-content: space-evenly;
+    gap: 0;
     padding-block-start: 0;
-    padding-block-end: var(--space-xl);
-    margin-block-start: calc(-1 * var(--space-xl));
+    padding-block-end: 0;
     text-align: center;
+    block-size: 100dvh;
 }
 
-main > section[aria-labelledby="inicio-cta"]::before {
-    content: "";
-    align-self: stretch;
-    border-block-start: 0.125rem solid var(--color-secondary);
+main > section[aria-labelledby="inicio-cta"] > h2 {
+    padding-block-end: 0;
 }
 
 main > section[aria-labelledby="inicio-cta"] > p {
