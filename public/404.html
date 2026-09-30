@@ -3,44 +3,49 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <title>Página no encontrada | Llaneza Consultores</title>
+    <meta name="description" content="Lo sentimos, la página que buscas no existe. Vuelve al inicio de Llaneza Consultores.">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
     <header>
         <a href="/" aria-label="Inicio — Llaneza Consultores">
             <img src="/images/logo-llaneza.png" alt="Llaneza Consultores" width="140" height="140">
+            Llaneza Consultores
         </a>
-        <nav aria-label="Principal">
+        <button type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"></button>
+        <nav id="menu-principal" aria-label="Principal">
             <ul>
                 <li>
                     <a href="/">Inicio</a>
                 </li>
-                <li>
-                    <a href="/servicios.html">Servicios</a>
-                    <ul>
-                        <li><a href="/fiscal.html">Fiscal</a></li>
-                        <li><a href="/laboral.html">Laboral</a></li>
-                        <li><a href="/contable.html">Contable</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/quienes-somos.html">Quiénes somos</a>
-                </li>
-                <li>
-                    <a href="/contacto.html">Contacto</a>
-                </li>
             </ul>
         </nav>
     </header>
-
-    <main></main>
-
+    <div>
+        <picture>
+            <source media="(max-width: 50rem)" srcset="/images/cabecera/fondo-cabecera-pq.webp" width="800" height="800" type="image/webp">
+            <source media="(max-width: 75rem)" srcset="/images/cabecera/fondo-cabecera-md.webp" width="1200" height="675" type="image/webp">
+            <img src="/images/cabecera/fondo-cabecera.webp" alt="" width="1672" height="941">
+        </picture>
+        <section aria-labelledby="error-hero">
+            <h1 id="error-hero">Página no encontrada</h1>
+            <p>Lo sentimos, la página que buscas no existe.</p>
+            <a href="/" data-type="primary">Volver al inicio</a>
+        </section>
+    </div>
     <footer>
         <section>
             <h2>Horario</h2>
             <ul>
-                <li>Lunes a Jueves: 09:00 – 13:30 16:00 – 19:30</li>
+                <li>
+                    Lunes a Jueves:
+                    <span>09:00 – 13:30</span>
+                    <span>16:00 – 19:30</span>
+                </li>
                 <li>Viernes: 09:00 – 14:30</li>
                 <li>Verano (Jul-Sep): 09:00 – 15:00</li>
             </ul>
@@ -60,19 +65,12 @@
         <nav aria-labelledby="footer-textos-legales">
             <h2 id="footer-textos-legales">Textos legales</h2>
             <ul>
-                <li><a>Política de privacidad</a></li>
-                <li><a>Política de Cookies</a></li>
-                <li><a>Aviso Legal</a></li>
-            </ul>
-        </nav>
-        <nav aria-labelledby="footer-servicios">
-            <h2 id="footer-servicios">Servicios</h2>
-            <ul>
-                <li><a href="/fiscal.html">Asesoría Fiscal</a></li>
-                <li><a href="/laboral.html">Asesoría Laboral</a></li>
-                <li><a href="/contable.html">Asesoría Contable</a></li>
+                <li><a href="/privacy.html">Política de privacidad</a></li>
+                <li><a href="/cookies.html">Política de Cookies</a></li>
+                <li><a href="/aviso-legal.html">Aviso Legal</a></li>
             </ul>
         </nav>
     </footer>
+    <script src="/js/index.js"></script>
 </body>
 </html>

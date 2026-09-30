@@ -61,41 +61,42 @@
     </script>
 </head>
 <body>
+    <header>
+        <a href="/" aria-label="Inicio — Llaneza Consultores">
+            <img src="images/logo-llaneza.png" alt="Llaneza Consultores" width="140" height="140">
+            Llaneza Consultores
+        </a>
+        <button type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"></button>
+        <nav id="menu-principal" aria-label="Principal">
+            <ul>
+                <li>
+                    <a href="./index.html" aria-current="page">Inicio</a>
+                </li>
+                <!--
+                <li>
+                    <a href="/servicios.html">Servicios</a>
+                    <ul>
+                        <li><a href="/fiscal.html">Fiscal</a></li>
+                        <li><a href="/laboral.html">Laboral</a></li>
+                        <li><a href="/contable.html">Contable</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/quienes-somos.html">Quiénes somos</a>
+                </li>
+                <li>
+                    <a href="/contacto.html">Contacto</a>
+                </li>
+                -->
+            </ul>
+        </nav>
+    </header>
     <div>
         <picture>
             <source media="(max-width: 50rem)" srcset="images/cabecera/fondo-cabecera-pq.webp" width="800" height="800" type="image/webp">
             <source media="(max-width: 75rem)" srcset="images/cabecera/fondo-cabecera-md.webp" width="1200" height="675" type="image/webp">
             <img src="images/cabecera/fondo-cabecera.webp" alt="" width="1672" height="941">
         </picture>
-        <header>
-            <a href="/" aria-label="Inicio — Llaneza Consultores">
-                <img src="images/logo-llaneza.png" alt="Llaneza Consultores" width="140" height="140">
-                Llaneza Consultores
-            </a>
-            <nav aria-label="Principal">
-                <ul>
-                    <li>
-                        <a href="/" aria-current="page">Inicio</a>
-                    </li>
-                    <!--
-                    <li>
-                        <a href="/servicios.html">Servicios</a>
-                        <ul>
-                            <li><a href="/fiscal.html">Fiscal</a></li>
-                            <li><a href="/laboral.html">Laboral</a></li>
-                            <li><a href="/contable.html">Contable</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/quienes-somos.html">Quiénes somos</a>
-                    </li>
-                    <li>
-                        <a href="/contacto.html">Contacto</a>
-                    </li>
-                    -->
-                </ul>
-            </nav>
-        </header>
         <section aria-labelledby="inicio-hero">
             <h1 id="inicio-hero">Tranquilidad legal y financiera para tu negocio</h1>
             <p>Más de 40 años siendo el respaldo de las empresas y autónomos en la cuenca del Nalón. Ahora, con una visión ágil y adaptada a los nuevos emprendedores.</p>
@@ -154,13 +155,13 @@
         </section>
 
         <section aria-labelledby="inicio-quienes-somos">
-            <h2 id="inicio-quienes-somos">Dos generaciones a tu servicio en El Entrego.</h2>
+            <h2 id="inicio-quienes-somos">Dos generaciones a tu servicio en <span class="mobile-break"><br></span> El Entrego</h2>
             <p>Heredamos la firmeza, seguridad y seriedad de más de 40 años de trayectoria iniciada por Olegario y Eulalio Llaneza. Hoy, combinamos ese rigor clásico con una gestión actualizada y moderna para dar el mejor servicio a la Cuenca.</p>
             <a href="https://maps.app.goo.gl/qGC6nZ6uGzYQmeMW6" target="_blank" rel="noopener" data-type="secondary">Conócenos</a>
         </section>
 
         <section aria-labelledby="inicio-cta">
-            <h2 id="inicio-cta">El rigor de siempre. La agilidad de hoy.</h2>
+            <h2 id="inicio-cta">El rigor de siempre. La agilidad de hoy</h2>
             <p>Deja el papeleo en manos de Llaneza Consultores y céntrate en hacer crecer tu empresa.</p>
             <ul>
                 <li>
@@ -201,9 +202,9 @@
         <nav aria-labelledby="footer-textos-legales">
             <h2 id="footer-textos-legales">Textos legales</h2>
             <ul>
-                <li><a>Política de privacidad</a></li>
-                <li><a>Política de Cookies</a></li>
-                <li><a>Aviso Legal</a></li>
+                <li><a href="/privacy.html">Política de privacidad</a></li>
+                <li><a href="/cookies.html">Política de Cookies</a></li>
+                <li><a href="/aviso-legal.html">Aviso Legal</a></li>
             </ul>
         </nav>
         <!--
@@ -217,5 +218,6 @@
         </nav>
         -->
     </footer>
+    <script src="js/index.js"></script>
 </body>
 </html>
