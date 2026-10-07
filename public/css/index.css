@@ -1,11 +1,11 @@
-body > div:has(> picture) {
+:where(body[data-hero]) > div {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
     height: 100dvh;
     max-height: 100dvh;
 }
 
-body > div:has(> picture) > picture {
+:where(body[data-hero]) > div > picture {
     grid-column: 1;
     grid-row: 1;
     width: 100%;
@@ -14,7 +14,7 @@ body > div:has(> picture) > picture {
     overflow: hidden;
 }
 
-body > div:has(> picture) > picture img {
+:where(body[data-hero]) > div > picture img {
     width: 100%;
     height: 100%;
     max-width: none;
@@ -22,49 +22,7 @@ body > div:has(> picture) > picture img {
     object-position: center;
 }
 
-body > header {
-    border-block-end: none;
-    position: fixed;
-    inset-inline: 0;
-    inline-size: 100%;
-}
-
-body > header > a {
-    gap: var(--space-xs);
-    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
-    transform: translateY(0.125rem);
-}
-
-body > header > a img {
-    max-height: 1.75rem;
-    transform: translateY(-0.125rem);
-}
-
-body > header > button {
-    display: none;
-}
-
-body > header nav > ul {
-    gap: var(--space-s);
-}
-
-body > header nav a {
-    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.375rem);
-    color: #000000;
-}
-
-body > header nav a[aria-current="page"] {
-    font-weight: var(--font-weight-regular);
-    color: #000000;
-}
-
-body > header nav a[aria-current="page"]:hover {
-    color: var(--color-secondary);
-}
-
-body > div:has(> picture) > section {
+:where(body[data-hero]) > div > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,19 +35,19 @@ body > div:has(> picture) > section {
     text-align: center;
 }
 
-body > div:has(> picture) h1 {
+:where(body[data-hero]) > div h1 {
     font-size: clamp(2.25rem, 5vw, 3.5rem);
     line-height: 1.15;
     color: #000000;
 }
 
-body > div:has(> picture) > section > p {
+:where(body[data-hero]) > div > section > p {
     font-size: clamp(1.125rem, 2.2vw, 1.5rem);
     color: #000000;
     max-inline-size: 60rem;
 }
 
-body > div:has(> picture) > section > a[data-type="primary"] {
+:where(body[data-hero]) > div > section > a[data-type="primary"] {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
     color: var(--color-background);
@@ -109,15 +67,16 @@ main section {
     gap: var(--space-m);
 }
 
-main h3 {
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-extra-light);
-    color: var(--color-tertiary);
+main section > h2 {
+    padding-block-end: var(--space-s);
+    font-size: clamp(2.25rem, 1.7rem + 1.8vw, 3.15rem);
+    font-weight: var(--font-weight-light);
+    color: var(--color-primary);
+    text-align: center;
 }
 
 main > section[aria-labelledby="inicio-servicios"] {
     gap: var(--space-2xs);
-    padding-block-start: 0;
     padding-block-end: calc(var(--space-2xl) + var(--space-xl) - var(--space-s) - var(--space-2xs));
     position: relative;
 }
@@ -127,23 +86,31 @@ main > section[aria-labelledby="inicio-servicios"] > h2 {
     padding-block-end: var(--space-2xs);
 }
 
-main > section[aria-labelledby="inicio-servicios"]::before {
+main > section[aria-labelledby="inicio-servicios"]::before,
+main > section[aria-labelledby="inicio-quienes-somos"]::before {
     content: "";
     position: absolute;
     inset-inline-start: 0;
-    inset-block-start: -0.75rem;
-    inset-block-end: 2rem;
     inline-size: 2.375rem;
     background: linear-gradient(to right, var(--color-primary) 0 1rem, transparent 1rem 1.375rem, var(--color-primary) 1.375rem 2.375rem, transparent 2.375rem 100%);
 }
 
-main > section[aria-labelledby="inicio-servicios"]::after {
+main > section[aria-labelledby="inicio-servicios"]::after,
+main > section[aria-labelledby="inicio-quienes-somos"]::after {
     content: "";
     position: absolute;
     inset-inline: 0;
-    inset-block-end: -1rem;
     block-size: 3rem;
     background-color: var(--color-primary);
+}
+
+main > section[aria-labelledby="inicio-servicios"]::before {
+    inset-block-start: -0.75rem;
+    inset-block-end: 2rem;
+}
+
+main > section[aria-labelledby="inicio-servicios"]::after {
+    inset-block-end: -1rem;
 }
 
 main > section[aria-labelledby="inicio-servicios"] > div {
@@ -194,17 +161,10 @@ main > section[aria-labelledby="inicio-servicios"] article a:hover h3 {
 
 main > section[aria-labelledby="inicio-gestiones"] {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: var(--space-s);
     padding-block: var(--space-l);
-    position: relative;
-    background-color: var(--color-background);
     color: #000000;
-}
-
-main > section[aria-labelledby="inicio-gestiones"] > h2 {
-    color: var(--color-primary);
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > p {
@@ -227,7 +187,6 @@ main > section[aria-labelledby="inicio-gestiones"] article {
     align-items: center;
     gap: var(--space-xs);
     padding: var(--space-m);
-    background-color: var(--color-background);
     border: 0.0625rem solid var(--color-border);
     block-size: 100%;
 }
@@ -253,11 +212,8 @@ main > section[aria-labelledby="inicio-gestiones"] article p {
 
 main > section[aria-labelledby="inicio-quienes-somos"] {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
     justify-content: space-evenly;
     gap: 0;
-    padding-block-start: 0;
     padding-block-end: 3rem;
     position: relative;
     text-align: center;
@@ -265,73 +221,36 @@ main > section[aria-labelledby="inicio-quienes-somos"] {
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"]::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: 0;
     inset-block-start: 0;
     inset-block-end: calc(3rem - 0.125rem);
-    inline-size: 2.375rem;
-    background: linear-gradient(to right, var(--color-primary) 0 1rem, transparent 1rem 1.375rem, var(--color-primary) 1.375rem 2.375rem, transparent 2.375rem 100%);
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"]::after {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
     inset-block-end: 0;
-    block-size: 3rem;
-    background-color: var(--color-primary);
     z-index: 1;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] > h2,
 main > section[aria-labelledby="inicio-quienes-somos"] > p {
     inline-size: 100%;
-    max-inline-size: none;
-    text-align: center;
     padding-block-end: 0;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] > p {
     inline-size: min(100%, 60rem);
-    max-inline-size: 60rem;
     align-self: center;
     line-height: 1.7;
     color: var(--color-tertiary);
-    text-align: center;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] > a {
     align-self: center;
 }
 
-main section:has(> article) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    gap: var(--space-m);
-}
-
-main section:has(> article) > h2,
-main section:has(> article) > p {
-    grid-column: 1 / -1;
-}
-
-main section:has(> article) > article {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    padding: var(--space-m);
-    background-color: var(--color-surface);
-}
-
 main > section[aria-labelledby="inicio-cta"] {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
     justify-content: space-evenly;
     gap: 0;
-    padding-block-start: 0;
-    padding-block-end: 0;
     text-align: center;
     block-size: 100dvh;
 }
@@ -343,10 +262,8 @@ main > section[aria-labelledby="inicio-cta"] > h2 {
 main > section[aria-labelledby="inicio-cta"] > p {
     align-self: center;
     inline-size: min(100%, 90rem);
-    max-inline-size: 90rem;
     line-height: 1.7;
     color: var(--color-tertiary);
-    text-align: center;
 }
 
 main > section[aria-labelledby="inicio-cta"] ul {
@@ -369,15 +286,7 @@ main > section[aria-labelledby="inicio-cta"] a[data-type="secondary"] {
     text-align: center;
 }
 
-.mobile-break {
-    display: none;
-}
-
 @media (min-width: 48rem) {
-    body > header nav > ul {
-        gap: var(--space-m) var(--space-l);
-    }
-
     main > section[aria-labelledby="inicio-servicios"] > div {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--space-xl);
@@ -395,7 +304,7 @@ main > section[aria-labelledby="inicio-cta"] a[data-type="secondary"] {
 }
 
 @media (max-width: 47.9375rem) {
-    body > div:has(> picture) {
+    :where(body[data-hero]) > div {
         height: auto;
         min-height: 100dvh;
         max-height: none;
@@ -403,100 +312,27 @@ main > section[aria-labelledby="inicio-cta"] a[data-type="secondary"] {
         max-inline-size: 100%;
     }
 
-    body > div:has(> picture) > picture,
-    body > div:has(> picture) > picture img {
+    :where(body[data-hero]) > div > picture,
+    :where(body[data-hero]) > div > picture img {
         inline-size: 100%;
         max-inline-size: none;
         min-inline-size: 0;
     }
 
-    body > header > a {
-        flex: 1 1 auto;
-        flex-wrap: nowrap;
-        min-inline-size: 0;
-        font-size: 1.125rem;
-    }
-
-    body > header > button {
-        display: block;
-        flex: 0 0 auto;
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
-        padding: 0;
-        border: 0;
-        background-color: transparent;
-        background-image:
-            linear-gradient(var(--color-primary), var(--color-primary)),
-            linear-gradient(var(--color-primary), var(--color-primary)),
-            linear-gradient(var(--color-primary), var(--color-primary));
-        background-repeat: no-repeat;
-        background-position: center 0.6rem, center, center 1.65rem;
-        background-size: 1.375rem 0.1875rem;
-        cursor: pointer;
-    }
-
-    body > header nav {
-        display: none;
-    }
-
-    body > header nav[data-open] {
-        display: flex;
-        flex: 1 1 100%;
-        padding-block: var(--space-s);
-        background-color: var(--color-background);
-    }
-
-    body > header nav[data-open] > ul,
-    body > header nav[data-open] > ul > li {
-        inline-size: 100%;
-    }
-
-    body > header nav[data-open] > ul > li {
-        position: relative;
-    }
-
-    body > header nav[data-open] > ul > li > a::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-    }
-
-    body > header nav a[aria-current="page"] {
-        font-weight: var(--font-weight-medium);
-        color: var(--color-primary);
-    }
-
-    body > header nav a:hover {
-        color: var(--color-secondary);
-    }
-
-    body > header nav > ul > li > a[aria-current="page"]::after,
-    body > header nav > ul > li > a[aria-current="page"]:not(:hover)::after,
-    body > header nav > ul > li > a:hover::after {
-        border-inline-start-color: var(--color-secondary);
-        background-size: 100% 0.125rem;
-    }
-
-    body > div:has(> picture) > section {
+    :where(body[data-hero]) > div > section {
         justify-content: center;
         gap: var(--space-l);
         padding-block-start: var(--space-xl);
-        padding-block-end: calc(var(--space-xl) - var(--space-s));
+        padding-block-end: calc(var(--space-2xl) * 2);
         padding-inline: var(--space-l);
-        transform: translateY(-5rem);
     }
 
-    body > div:has(> picture) > section > p {
+    :where(body[data-hero]) > div > section > p {
         text-align: justify;
-        padding-block-end: var(--space-s);
+        padding-block-end: calc(var(--space-2xl) + var(--space-s));
     }
 
-    body > div:has(> picture) > section > a[data-type="primary"] {
-        margin-block-start: 7rem;
-        margin-block-end: -7rem;
-    }
-
-    body > div:has(> picture) h1 {
+    :where(body[data-hero]) > div h1 {
         max-inline-size: 20.5rem;
     }
 
@@ -537,6 +373,7 @@ main > section[aria-labelledby="inicio-cta"] a[data-type="secondary"] {
         padding-block-end: var(--space-2xs);
         max-inline-size: 19rem;
         align-self: center;
+        text-wrap: balance;
     }
 
     main > section[aria-labelledby="inicio-quienes-somos"] > p {
@@ -572,37 +409,30 @@ main > section[aria-labelledby="inicio-cta"] a[data-type="secondary"] {
     main > section[aria-labelledby="inicio-gestiones"] article p {
         text-align: center;
     }
-
-    .mobile-break {
-    display: inline;
-}
 }
 
 @media (min-width: 48rem) and (max-width: 63.9375rem) {
-    body > div:has(> picture) > section > p,
-    main p {
+    :where(body[data-hero]) > div > section > p,
+    main > section[aria-labelledby^="inicio-"] p {
         font-size: 1.375rem;
     }
 
-    body > div:has(> picture) > section {
+    :where(body[data-hero]) > div > section {
         gap: 0;
+        padding-block-end: var(--space-2xl);
         padding-inline: var(--space-xl);
     }
 
-    body > div:has(> picture) h1 {
+    :where(body[data-hero]) > div h1 {
         inline-size: 100%;
         max-inline-size: 44rem;
         font-size: 2.125rem;
-        margin-block-start: -2rem;
-        margin-block-end: var(--space-2xl);
+        padding-block-end: var(--space-2xl);
     }
 
-    body > div:has(> picture) > section > p {
+    :where(body[data-hero]) > div > section > p {
         max-inline-size: 40rem;
-    }
-
-    body > div:has(> picture) > section > a[data-type="primary"] {
-        margin-block-start: var(--space-2xl);
+        padding-block-end: var(--space-2xl);
     }
 
     main > section[aria-labelledby="inicio-servicios"] {

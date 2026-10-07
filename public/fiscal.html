@@ -3,39 +3,91 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link rel="stylesheet" href="/css/shared.css">
-    <link rel="stylesheet" href="/css/fiscal.css">
+    <title>Fiscal | Llaneza Consultores</title>
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/contenido.css">
 </head>
 <body>
     <header>
-        <a href="/" aria-label="Inicio — Llaneza Consultores">
-            <img src="/images/logo-llaneza.png" alt="Llaneza Consultores" width="140" height="140">
+        <a href="index.html" aria-label="Inicio — Llaneza Consultores">
+            <img src="images/logo-llaneza.png" alt="Llaneza Consultores" width="140" height="140">
+            Llaneza Consultores
         </a>
-        <nav aria-label="Principal">
+        <button type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"></button>
+        <nav id="menu-principal" aria-label="Principal">
             <ul>
                 <li>
-                    <a href="/">Inicio</a>
+                    <a href="index.html">Inicio</a>
                 </li>
                 <li>
-                    <a href="/servicios.html">Servicios</a>
+                    <a href="servicios.html">Servicios</a>
                     <ul>
-                        <li><a href="/fiscal.html" aria-current="page">Fiscal</a></li>
-                        <li><a href="/laboral.html">Laboral</a></li>
-                        <li><a href="/contable.html">Contable</a></li>
+                        <li><a href="fiscal.html" aria-current="page">Fiscal</a></li>
+                        <li><a href="laboral.html">Laboral</a></li>
+                        <li><a href="contable.html">Contable</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/quienes-somos.html">Quiénes somos</a>
+                    <a href="quienes-somos.html">Quiénes somos</a>
                 </li>
                 <li>
-                    <a href="/contacto.html">Contacto</a>
+                    <a href="contacto.html">Contacto</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main></main>
+    <main>
+        <h1>[TÍTULO DE LA PÁGINA]</h1>
+
+        <p>[INTRODUCCIÓN]</p>
+
+        <section aria-labelledby="fiscal-servicios">
+            <h2 id="fiscal-servicios">[SERVICIOS FISCALES]</h2>
+
+            <ul>
+                <li>
+                    <h3>[SERVICIO FISCAL 1]</h3>
+                    <p>[DESCRIPCIÓN DEL SERVICIO 1]</p>
+                </li>
+
+                <li>
+                    <h3>[SERVICIO FISCAL 2]</h3>
+                    <p>[DESCRIPCIÓN DEL SERVICIO 2]</p>
+                </li>
+
+                <li>
+                    <h3>[SERVICIO FISCAL 3]</h3>
+                    <p>[DESCRIPCIÓN DEL SERVICIO 3]</p>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="fiscal-proceso">
+            <h2 id="fiscal-proceso">[PROCESO]</h2>
+
+            <ol>
+                <li>[PASO 1]</li>
+                <li>[PASO 2]</li>
+                <li>[PASO 3]</li>
+            </ol>
+        </section>
+
+        <section aria-labelledby="fiscal-cta">
+            <h2 id="fiscal-cta">[CTA]</h2>
+
+            <p>[TEXTO CTA]</p>
+
+            <ul>
+                <li>
+                    <a href="contacto.html" data-type="secondary">[CONTACTO]</a>
+                </li>
+                <li>
+                    <a href="tel:+34662939937" data-type="secondary">[TELÉFONO]</a>
+                </li>
+            </ul>
+        </section>
+    </main>
 
     <footer>
         <section>
@@ -61,19 +113,20 @@
         <nav aria-labelledby="footer-textos-legales">
             <h2 id="footer-textos-legales">Textos legales</h2>
             <ul>
-                <li><a href="/privacy.html">Política de privacidad</a></li>
-                <li><a href="/cookies.html">Política de Cookies</a></li>
-                <li><a href="/aviso-legal.html">Aviso Legal</a></li>
+                <li><a href="privacy.html">Política de privacidad</a></li>
+                <li><a href="cookies.html">Política de Cookies</a></li>
+                <li><a href="aviso-legal.html">Aviso Legal</a></li>
             </ul>
         </nav>
         <nav aria-labelledby="footer-servicios">
             <h2 id="footer-servicios">Servicios</h2>
             <ul>
-                <li><a href="/fiscal.html">Asesoría Fiscal</a></li>
-                <li><a href="/laboral.html">Asesoría Laboral</a></li>
-                <li><a href="/contable.html">Asesoría Contable</a></li>
+                <li><a href="fiscal.html">Asesoría Fiscal</a></li>
+                <li><a href="laboral.html">Asesoría Laboral</a></li>
+                <li><a href="contable.html">Asesoría Contable</a></li>
             </ul>
         </nav>
     </footer>
+    <script src="js/index.js"></script>
 </body>
 </html>
