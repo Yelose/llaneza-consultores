@@ -1,23 +1,27 @@
+:root {
+    --header-offset: 4.5rem;
+}
+
 :where(body[data-hero]) > div {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
-    height: 100dvh;
-    max-height: 100dvh;
+    block-size: 100dvh;
+    max-block-size: 100dvh;
 }
 
 :where(body[data-hero]) > div > picture {
     grid-column: 1;
     grid-row: 1;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     min-block-size: 0;
     overflow: hidden;
 }
 
 :where(body[data-hero]) > div > picture img {
-    width: 100%;
-    height: 100%;
-    max-width: none;
+    inline-size: 100%;
+    block-size: 100%;
+    max-inline-size: none;
     object-fit: cover;
     object-position: center;
 }
@@ -29,22 +33,26 @@
     align-items: center;
     grid-column: 1;
     grid-row: 1;
-    gap: var(--space-m);
-    padding: var(--space-l);
+    gap: clamp(1rem, 3dvh, var(--space-m));
+    padding-block: var(--header-offset) var(--space-l);
+    padding-inline: clamp(var(--space-l), 4vw, var(--space-xl));
     min-block-size: 0;
     text-align: center;
 }
 
 :where(body[data-hero]) > div h1 {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    max-inline-size: 44rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.15;
     color: #000000;
+    text-wrap: balance;
 }
 
 :where(body[data-hero]) > div > section > p {
     font-size: clamp(1.125rem, 2.2vw, 1.5rem);
     color: #000000;
     max-inline-size: 60rem;
+    text-wrap: balance;
 }
 
 :where(body[data-hero]) > div > section > a[data-type="primary"] {
@@ -56,34 +64,36 @@
 main {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
-    padding-block-start: var(--space-xs);
-    padding-block-end: var(--space-l);
+    gap: 0;
+    padding-block: 0;
 }
 
-main section {
+main > section {
     display: flex;
     flex-direction: column;
-    gap: var(--space-m);
+    justify-content: center;
+    min-block-size: calc(100dvh - var(--header-offset));
+    gap: clamp(1rem, 3.5dvh, var(--space-l));
+    padding-block: clamp(1rem, 3dvh, var(--space-l));
 }
 
 main section > h2 {
-    padding-block-end: var(--space-s);
-    font-size: clamp(2.25rem, 1.7rem + 1.8vw, 3.15rem);
+    padding-block-end: 0;
+    font-size: clamp(1.875rem, min(3.2vw, 5.2dvh), 3.15rem);
     font-weight: var(--font-weight-light);
+    line-height: 1.2;
     color: var(--color-primary);
     text-align: center;
 }
 
 main > section[aria-labelledby="inicio-servicios"] {
-    gap: var(--space-2xs);
-    padding-block-end: calc(var(--space-2xl) + var(--space-xl) - var(--space-s) - var(--space-2xs));
     position: relative;
-}
-
-main > section[aria-labelledby="inicio-servicios"] > h2 {
-    padding-block-start: calc(var(--space-l) + var(--space-2xs));
-    padding-block-end: var(--space-2xs);
+    align-items: center;
+    gap: clamp(1.25rem, 4.5dvh, 3rem);
+    padding-block-start: clamp(1rem, 2.5dvh, 2rem);
+    padding-block-end: calc(3rem + clamp(1rem, 2.5dvh, 2rem));
+    padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
+    padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
 }
 
 main > section[aria-labelledby="inicio-servicios"]::before,
@@ -91,8 +101,18 @@ main > section[aria-labelledby="inicio-quienes-somos"]::before {
     content: "";
     position: absolute;
     inset-inline-start: 0;
-    inline-size: 2.375rem;
-    background: linear-gradient(to right, var(--color-primary) 0 1rem, transparent 1rem 1.375rem, var(--color-primary) 1.375rem 2.375rem, transparent 2.375rem 100%);
+    inset-block-start: 0;
+    inset-block-end: calc(3rem - 0.125rem);
+    inline-size: clamp(1.25rem, 2.2vw, 2.25rem);
+    background: linear-gradient(
+        to right,
+        var(--color-primary) 0%,
+        var(--color-primary) 35%,
+        transparent 35%,
+        transparent 65%,
+        var(--color-primary) 65%,
+        var(--color-primary) 100%
+    );
 }
 
 main > section[aria-labelledby="inicio-servicios"]::after,
@@ -100,57 +120,54 @@ main > section[aria-labelledby="inicio-quienes-somos"]::after {
     content: "";
     position: absolute;
     inset-inline: 0;
+    inset-block-end: 0;
     block-size: 3rem;
     background-color: var(--color-primary);
-}
-
-main > section[aria-labelledby="inicio-servicios"]::before {
-    inset-block-start: -0.75rem;
-    inset-block-end: 2rem;
-}
-
-main > section[aria-labelledby="inicio-servicios"]::after {
-    inset-block-end: -1rem;
+    z-index: 1;
 }
 
 main > section[aria-labelledby="inicio-servicios"] > div {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: clamp(1.5rem, 3.5vw, var(--space-xl));
+    max-inline-size: 86rem;
+    inline-size: 100%;
 }
 
 main > section[aria-labelledby="inicio-servicios"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-2xs);
+    gap: clamp(0.25rem, 1dvh, var(--space-2xs));
 }
 
 main > section[aria-labelledby="inicio-servicios"] article a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-2xs);
+    gap: clamp(0.25rem, 1dvh, var(--space-2xs));
     color: var(--color-primary);
     text-decoration: none;
     text-align: center;
 }
 
 main > section[aria-labelledby="inicio-servicios"] article img {
-    inline-size: 14rem;
-    block-size: auto;
+    block-size: clamp(7.5rem, min(14vw, 23dvh), 13.5rem);
+    inline-size: auto;
+    object-fit: contain;
 }
 
 main > section[aria-labelledby="inicio-servicios"] article h3 {
-    font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+    font-size: clamp(1.375rem, min(1.8vw, 3.2dvh), 1.9rem);
     font-weight: var(--font-weight-medium);
     color: var(--color-secondary);
     text-align: center;
 }
 
 main > section[aria-labelledby="inicio-servicios"] article p {
-    max-inline-size: 22rem;
-    line-height: 1.7;
+    max-inline-size: 20rem;
+    font-size: clamp(0.95rem, min(1.15vw, 2.2dvh), 1.125rem);
+    line-height: 1.6;
     text-align: justify;
 }
 
@@ -160,24 +177,25 @@ main > section[aria-labelledby="inicio-servicios"] article a:hover h3 {
 }
 
 main > section[aria-labelledby="inicio-gestiones"] {
-    display: flex;
     align-items: center;
-    gap: var(--space-s);
-    padding-block: var(--space-l);
+    gap: clamp(0.75rem, 2.5dvh, var(--space-m));
     color: #000000;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > p {
+    max-inline-size: 64rem;
     inline-size: 100%;
-    line-height: 1.7;
+    font-size: clamp(1rem, min(1.3vw, 2.3dvh), 1.1875rem);
+    line-height: 1.6;
     text-align: center;
     color: #000000;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > div {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-m);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: clamp(1rem, 2.2vw, var(--space-m));
+    max-inline-size: 86rem;
     inline-size: 100%;
 }
 
@@ -185,61 +203,47 @@ main > section[aria-labelledby="inicio-gestiones"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-m);
+    gap: clamp(0.375rem, 1.2dvh, var(--space-xs));
+    padding: clamp(1rem, 2.5dvh, var(--space-m));
     border: 0.0625rem solid var(--color-border);
     block-size: 100%;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] article img {
-    inline-size: 8rem;
-    block-size: auto;
+    block-size: clamp(5rem, min(9vw, 15dvh), 8rem);
+    inline-size: auto;
+    object-fit: contain;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] article h3 {
-    font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+    font-size: clamp(1.25rem, min(1.6vw, 2.8dvh), 1.65rem);
     font-weight: var(--font-weight-medium);
     color: var(--color-primary);
     text-align: center;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] article p {
-    max-inline-size: 22rem;
-    line-height: 1.7;
+    max-inline-size: 20rem;
+    font-size: clamp(0.9375rem, min(1.1vw, 2.1dvh), 1.0625rem);
+    line-height: 1.55;
     color: var(--color-tertiary);
     text-align: justify;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 0;
-    padding-block-end: 3rem;
     position: relative;
+    justify-content: space-evenly;
+    gap: clamp(1rem, 2.5dvh, var(--space-m));
+    padding-block-end: calc(3rem + clamp(1rem, 2.5dvh, 2rem));
+    padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     text-align: center;
-    block-size: 100dvh;
-}
-
-main > section[aria-labelledby="inicio-quienes-somos"]::before {
-    inset-block-start: 0;
-    inset-block-end: calc(3rem - 0.125rem);
-}
-
-main > section[aria-labelledby="inicio-quienes-somos"]::after {
-    inset-block-end: 0;
-    z-index: 1;
-}
-
-main > section[aria-labelledby="inicio-quienes-somos"] > h2,
-main > section[aria-labelledby="inicio-quienes-somos"] > p {
-    inline-size: 100%;
-    padding-block-end: 0;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] > p {
     inline-size: min(100%, 60rem);
     align-self: center;
-    line-height: 1.7;
+    font-size: clamp(1.05rem, min(1.4vw, 2.5dvh), 1.25rem);
+    line-height: 1.65;
     color: var(--color-tertiary);
 }
 
@@ -248,250 +252,35 @@ main > section[aria-labelledby="inicio-quienes-somos"] > a {
 }
 
 main > section[aria-labelledby="inicio-cta"] {
-    display: flex;
     justify-content: space-evenly;
-    gap: 0;
     text-align: center;
-    block-size: 100dvh;
-}
-
-main > section[aria-labelledby="inicio-cta"] > h2 {
-    padding-block-end: 0;
 }
 
 main > section[aria-labelledby="inicio-cta"] > p {
     align-self: center;
-    inline-size: min(100%, 90rem);
-    line-height: 1.7;
+    inline-size: min(100%, 64rem);
+    font-size: clamp(1.05rem, min(1.4vw, 2.5dvh), 1.25rem);
+    line-height: 1.65;
     color: var(--color-tertiary);
 }
 
 main > section[aria-labelledby="inicio-cta"] ul {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-s);
     align-self: center;
     list-style: none;
     padding: 0;
-    inline-size: 100%;
+    inline-size: min(100%, 28rem);
 }
 
 main > section[aria-labelledby="inicio-cta"] li {
+    flex: 1 1 12rem;
     display: flex;
 }
 
 main > section[aria-labelledby="inicio-cta"] a[data-type="secondary"] {
     inline-size: 100%;
-    block-size: 100%;
     text-align: center;
-}
-
-@media (min-width: 48rem) {
-    main > section[aria-labelledby="inicio-servicios"] > div {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-xl);
-    }
-
-    main > section[aria-labelledby="inicio-gestiones"] > div {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    main > section[aria-labelledby="inicio-cta"] ul {
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        inline-size: fit-content;
-    }
-}
-
-@media (max-width: 47.9375rem) {
-    :where(body[data-hero]) > div {
-        height: auto;
-        min-height: 100dvh;
-        max-height: none;
-        inline-size: 100%;
-        max-inline-size: 100%;
-    }
-
-    :where(body[data-hero]) > div > picture,
-    :where(body[data-hero]) > div > picture img {
-        inline-size: 100%;
-        max-inline-size: none;
-        min-inline-size: 0;
-    }
-
-    :where(body[data-hero]) > div > section {
-        justify-content: center;
-        gap: var(--space-l);
-        padding-block-start: var(--space-xl);
-        padding-block-end: calc(var(--space-2xl) * 2);
-        padding-inline: var(--space-l);
-    }
-
-    :where(body[data-hero]) > div > section > p {
-        text-align: justify;
-        padding-block-end: calc(var(--space-2xl) + var(--space-s));
-    }
-
-    :where(body[data-hero]) > div h1 {
-        max-inline-size: 20.5rem;
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] {
-        padding-block-end: calc(3rem + var(--space-l));
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] > h2 {
-        padding-block-start: var(--space-s);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] > div {
-        gap: var(--space-m);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] article {
-        gap: var(--space-2xs);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"]::before {
-        inset-block-end: calc(2rem - 0.125rem);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"]::after {
-        z-index: 1;
-    }
-
-    main > section[aria-labelledby="inicio-quienes-somos"] {
-        block-size: auto;
-        min-block-size: auto;
-        justify-content: flex-start;
-        gap: var(--space-s);
-        padding-block-start: var(--space-m);
-        padding-block-end: calc(3rem + var(--space-xl));
-    }
-
-    main > section[aria-labelledby="inicio-quienes-somos"] > h2 {
-        padding-block-end: var(--space-2xs);
-        max-inline-size: 19rem;
-        align-self: center;
-        text-wrap: balance;
-    }
-
-    main > section[aria-labelledby="inicio-quienes-somos"] > p {
-        padding-inline: var(--space-l);
-        text-align: justify;
-    }
-
-    main > section[aria-labelledby="inicio-cta"] {
-        block-size: auto;
-        min-block-size: auto;
-        justify-content: flex-start;
-        gap: var(--space-m);
-        padding-block: var(--space-l);
-    }
-
-    main > section[aria-labelledby="inicio-cta"] ul {
-        gap: var(--space-l);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] article p {
-        padding-inline: var(--space-m);
-        text-align: center;
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] article:first-of-type p {
-        max-inline-size: 18rem;
-    }
-
-    main > section[aria-labelledby="inicio-gestiones"] > p {
-        text-align: justify;
-    }
-
-    main > section[aria-labelledby="inicio-gestiones"] article p {
-        text-align: center;
-    }
-}
-
-@media (min-width: 48rem) and (max-width: 63.9375rem) {
-    :where(body[data-hero]) > div > section > p,
-    main > section[aria-labelledby^="inicio-"] p {
-        font-size: 1.375rem;
-    }
-
-    :where(body[data-hero]) > div > section {
-        gap: 0;
-        padding-block-end: var(--space-2xl);
-        padding-inline: var(--space-xl);
-    }
-
-    :where(body[data-hero]) > div h1 {
-        inline-size: 100%;
-        max-inline-size: 44rem;
-        font-size: 2.125rem;
-        padding-block-end: var(--space-2xl);
-    }
-
-    :where(body[data-hero]) > div > section > p {
-        max-inline-size: 40rem;
-        padding-block-end: var(--space-2xl);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] {
-        padding-inline: clamp(3.25rem, 8vw, 5rem);
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] > div {
-        grid-template-columns: 1fr;
-    }
-
-    main > section[aria-labelledby="inicio-servicios"] article p {
-        max-inline-size: 36rem;
-        inline-size: 100%;
-        padding-inline: var(--space-m);
-        text-align: center;
-        align-self: center;
-    }
-
-    main > section[aria-labelledby="inicio-gestiones"] > div {
-        grid-template-columns: 1fr;
-    }
-
-    main > section[aria-labelledby="inicio-gestiones"] article p {
-        max-inline-size: none;
-        inline-size: 100%;
-    }
-
-    main > section[aria-labelledby="inicio-quienes-somos"] {
-        block-size: auto;
-        min-block-size: auto;
-        justify-content: flex-start;
-        gap: var(--space-m);
-        padding-block-start: var(--space-xl);
-        padding-block-end: calc(3rem + var(--space-xl));
-        padding-inline: clamp(var(--space-2xl), 8vw, 5rem);
-    }
-
-    main > section[aria-labelledby="inicio-cta"] {
-        block-size: auto;
-        min-block-size: auto;
-        justify-content: flex-start;
-        gap: var(--space-m);
-        padding-block: var(--space-xl);
-        padding-inline: clamp(var(--space-2xl), 8vw, 5rem);
-    }
-
-    main > section[aria-labelledby="inicio-cta"] > h2 {
-        max-inline-size: 11.5em;
-        align-self: center;
-    }
-
-    footer h2 {
-        font-size: 1.375rem;
-    }
-
-    footer li,
-    footer address,
-    footer address p,
-    footer a[href] {
-        font-size: 1.125rem;
-    }
 }

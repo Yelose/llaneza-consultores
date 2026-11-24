@@ -33,18 +33,17 @@
 *::before,
 *::after {
     box-sizing: border-box;
-}
-
-* {
     margin: 0;
 }
 
 html {
     font-size: 100%;
+    overflow-x: clip;
 }
 
 body {
-    min-height: 100dvh;
+    min-block-size: 100dvh;
+    overflow-x: clip;
     font-family: var(--font-family);
     font-size: 1.25rem;
     font-weight: var(--font-weight-regular);
@@ -67,23 +66,19 @@ a {
 }
 
 img,
-picture {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
+picture,
 video,
 canvas,
 svg {
     display: block;
-    max-width: 100%;
+    max-inline-size: 100%;
+    block-size: auto;
 }
 
 iframe,
 embed,
 object {
-    max-width: 100%;
+    max-inline-size: 100%;
 }
 
 :focus-visible {
@@ -126,6 +121,7 @@ a[data-type="secondary"]:hover {
 }
 
 header {
+    container-type: inline-size;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -154,28 +150,50 @@ header.is-scrolled {
 
 header > a {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     gap: var(--space-xs);
+    min-inline-size: 0;
     color: var(--color-primary);
-    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
+    font-size: clamp(1.125rem, 0.9rem + 1.4vw, 2rem);
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     transform: translateY(0.125rem);
 }
 
 header > a img {
-    width: auto;
-    max-height: 1.75rem;
+    inline-size: auto;
+    max-block-size: 1.75rem;
     transform: translateY(-0.125rem);
 }
 
 header > button {
-    display: none;
+    display: block;
+    flex: 0 0 auto;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-image:
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary)),
+        linear-gradient(var(--color-primary), var(--color-primary));
+    background-repeat: no-repeat;
+    background-position: center 0.6rem, center, center 1.65rem;
+    background-size: 1.375rem 0.1875rem;
+    cursor: pointer;
 }
 
 header nav {
+    display: none;
     flex: 1 1 100%;
+}
+
+header nav[data-open] {
+    display: flex;
+    padding-block: var(--space-s);
+    background-color: var(--color-background);
 }
 
 header nav ul {
@@ -187,13 +205,19 @@ header nav > ul {
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
+    inline-size: 100%;
+}
+
+header nav > ul > li {
+    position: relative;
 }
 
 header nav ul ul {
     padding-inline-start: var(--space-m);
 }
 
-header nav a {
+header nav a,
+header nav span {
     display: inline-block;
     padding-block: var(--space-2xs);
     padding-inline: var(--space-2xs);
@@ -201,24 +225,30 @@ header nav a {
     font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.375rem);
     text-decoration: none;
     white-space: nowrap;
-    transition: color var(--transition-medium);
+    cursor: pointer;
+    transition:
+        color var(--transition-medium),
+        background-color var(--transition-fast);
 }
 
-:where(body[data-hero]) > header nav a {
+:where(body[data-hero]) > header:not(.is-scrolled) nav > ul > li > a,
+:where(body[data-hero]) > header:not(.is-scrolled) nav > ul > li > span {
     color: #000000;
 }
 
-header nav > ul > li > a {
+header nav > ul > li > a,
+header nav > ul > li > span {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-header nav > ul > li > a::after {
+header nav > ul > li > a::after,
+header nav > ul > li > span::after {
     content: "";
     display: block;
-    width: 100%;
-    height: 0.5rem;
+    inline-size: 100%;
+    block-size: 0.5rem;
     border-inline-start: 0.125rem solid transparent;
     background-image: linear-gradient(
         var(--color-secondary),
@@ -232,84 +262,45 @@ header nav > ul > li > a::after {
         background-size var(--transition-medium);
 }
 
-header nav a:hover {
-    color: var(--color-secondary);
-}
-
-header nav a[aria-current="page"] {
-    font-weight: var(--font-weight-medium);
-    color: var(--color-primary);
-}
-
-header nav a[aria-current="page"]:hover {
+header nav a:hover,
+header nav li:hover > span,
+header nav > ul > li:has(a[aria-current="page"]) > span {
     color: var(--color-secondary);
 }
 
 header nav > ul > li > a[aria-current="page"]::after,
-header nav > ul > li > a:hover::after {
+header nav > ul > li:has(a[aria-current="page"]) > span::after,
+header nav > ul > li > a:hover::after,
+header nav > ul > li:hover > span::after {
     border-inline-start-color: var(--color-secondary);
     background-size: 100% 0.125rem;
 }
 
-@media (max-width: 47.9375rem) {
-    header > a {
-        flex: 1 1 auto;
-        flex-wrap: nowrap;
-        min-inline-size: 0;
-        font-size: 1.125rem;
-    }
+header nav ul ul a {
+    display: block;
+    inline-size: 100%;
+    padding-inline: var(--space-s);
+    border-inline-start: 0.1875rem solid transparent;
+}
 
+header nav ul ul a[aria-current="page"] {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-secondary);
+    border-inline-start-color: var(--color-secondary);
+    background-color: rgba(0, 50, 160, 0.08);
+}
+
+@container (min-width: 48rem) {
     header > button {
-        display: block;
-        flex: 0 0 auto;
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
-        padding: 0;
-        border: 0;
-        background-color: transparent;
-        background-image:
-            linear-gradient(var(--color-primary), var(--color-primary)),
-            linear-gradient(var(--color-primary), var(--color-primary)),
-            linear-gradient(var(--color-primary), var(--color-primary));
-        background-repeat: no-repeat;
-        background-position: center 0.6rem, center, center 1.65rem;
-        background-size: 1.375rem 0.1875rem;
-        cursor: pointer;
-    }
-
-    header nav {
         display: none;
     }
 
+    header nav,
     header nav[data-open] {
-        display: flex;
-        padding-block: var(--space-s);
-        background-color: var(--color-background);
-    }
-
-    header nav[data-open] > ul,
-    header nav[data-open] > ul > li {
-        inline-size: 100%;
-    }
-
-    header nav[data-open] > ul > li {
-        position: relative;
-    }
-
-    header nav[data-open] > ul > li > a::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-    }
-
-    header nav[data-open] > ul > li > ul {
-        position: relative;
-    }
-}
-
-@media (min-width: 48rem) {
-    header nav {
+        display: block;
         flex: 0 1 auto;
+        padding-block: 0;
+        background-color: transparent;
     }
 
     header nav > ul {
@@ -317,25 +308,17 @@ header nav > ul > li > a:hover::after {
         flex-wrap: wrap;
         align-items: center;
         gap: var(--space-m) var(--space-l);
-    }
-
-    :where(body[data-hero]) > header nav a[aria-current="page"] {
-        font-weight: var(--font-weight-regular);
-        color: #000000;
-    }
-
-    header nav > ul > li {
-        position: relative;
+        inline-size: auto;
     }
 
     header nav ul ul {
         position: absolute;
-        z-index: 1;
+        z-index: 20;
         inset-block-start: 100%;
         inset-inline-start: 0;
         min-inline-size: 100%;
         padding-block: var(--space-2xs);
-        padding-inline: var(--space-s);
+        padding-inline: var(--space-2xs);
         background-color: var(--color-background);
         border: 1px solid var(--color-border);
         visibility: hidden;
@@ -349,7 +332,7 @@ header nav > ul > li > a:hover::after {
 
 footer {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
     gap: var(--space-l);
     padding-block: var(--space-l);
     padding-inline: clamp(var(--space-m), 5vw, var(--space-2xl));
@@ -366,14 +349,8 @@ footer > * {
     min-inline-size: 0;
 }
 
-@media (min-width: 48rem) {
-    footer {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
 footer h2 {
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.15rem + 0.3vw, 1.375rem);
     font-weight: var(--font-weight-medium);
     color: var(--color-background);
 }
@@ -394,7 +371,7 @@ footer li,
 footer address,
 footer address p,
 footer a[href] {
-    font-size: 1rem;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 }
 
 footer address {
@@ -413,31 +390,12 @@ footer a[href]:hover {
     opacity: 0.7;
 }
 
-@media (max-width: 47.9375rem) {
-    html,
-    body {
-        overflow-x: hidden;
-    }
-
-    main > * {
-        padding-inline: clamp(var(--space-l), 5vw, var(--space-2xl));
-    }
-
-    footer {
-        inline-size: 100%;
-        max-inline-size: 100%;
-        padding-inline: clamp(var(--space-l), 5vw, var(--space-2xl));
-    }
-}
-
 .legal {
     display: flex;
     flex-direction: column;
     gap: var(--space-l);
-    max-inline-size: 80rem;
-    margin-inline: auto;
     padding-block: var(--space-xl) var(--space-2xl);
-    padding-inline: clamp(var(--space-l), 5vw, var(--space-2xl));
+    padding-inline: max(clamp(var(--space-l), 5vw, var(--space-2xl)), calc((100% - 80rem) / 2));
     text-align: start;
 }
 
@@ -476,13 +434,4 @@ footer a[href]:hover {
 .legal a[href] {
     color: var(--color-primary);
     text-decoration: underline;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation: none;
-        transition: none;
-    }
 }

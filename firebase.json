@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "llaneza-consultores",
     "public": "public",
     "ignore": [
       "firebase.json",
