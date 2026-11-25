@@ -1,0 +1,116 @@
+:root {
+    --header-offset: 4.5rem;
+}
+
+:where(body[data-hero]) > div {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    block-size: 65dvh;
+    max-block-size: 65dvh;
+}
+
+:where(body[data-hero]) > div > picture {
+    grid-column: 1;
+    grid-row: 1;
+    inline-size: 100%;
+    block-size: 100%;
+    min-block-size: 0;
+    overflow: hidden;
+}
+
+:where(body[data-hero]) > div > picture img {
+    inline-size: 100%;
+    block-size: 100%;
+    max-inline-size: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+:where(body[data-hero]) > div > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1;
+    grid-row: 1;
+    gap: clamp(0.75rem, 2.5dvh, var(--space-m));
+    padding-block: var(--header-offset) var(--space-l);
+    padding-inline: clamp(var(--space-l), 4vw, var(--space-xl));
+    min-block-size: 0;
+    text-align: center;
+}
+
+:where(body[data-hero]) > div h1 {
+    max-inline-size: 48rem;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.15;
+    color: #000000;
+    text-wrap: balance;
+}
+
+main.legal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.75rem, 4dvh, var(--space-xl));
+    inline-size: 100%;
+    padding-block-start: clamp(6.5rem, 15dvh, 10.5rem);
+    padding-block-end: clamp(8rem, 21dvh, 14rem);
+    padding-inline: clamp(var(--space-m), 5vw, var(--space-2xl));
+}
+
+main.legal > p,
+main.legal > section {
+    inline-size: 100%;
+    max-inline-size: 72rem;
+}
+
+main.legal > p {
+    font-size: var(--fs-section-lead);
+    line-height: 1.7;
+    color: var(--color-tertiary);
+    text-align: justify;
+    text-wrap: pretty;
+}
+
+main.legal > section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding-block-start: var(--space-m);
+    border-block-start: 1px solid var(--color-border);
+}
+
+main.legal > section h2 {
+    font-size: var(--fs-card-title);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.3;
+    color: var(--color-primary);
+    text-wrap: balance;
+}
+
+main.legal > section p,
+main.legal > section li {
+    font-size: var(--fs-card-text);
+    line-height: 1.7;
+    color: var(--color-tertiary);
+    text-align: justify;
+    text-wrap: pretty;
+}
+
+main.legal > section ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    padding-inline-start: 1.25rem;
+}
+
+main.legal a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+}
+
+main.legal a:hover {
+    color: var(--color-secondary);
+}
