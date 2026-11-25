@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --color-primary: #002F6C;
     --color-secondary: #0032A0;
     --color-tertiary: #3F4444;
@@ -317,6 +317,7 @@ header nav ul ul a[aria-current="page"] {
     header nav[data-open] {
         display: block;
         flex: 0 1 auto;
+    min-inline-size: clamp(0px, calc((56rem - 100vw) * 999), 100%);
         padding-block: 0;
         background-color: transparent;
     }
@@ -351,17 +352,15 @@ header nav ul ul a[aria-current="page"] {
 footer {
     position: relative;
     z-index: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-    justify-content: center;
-    justify-items: stretch;
-    align-items: start;
-    align-self: center;
-    gap: clamp(2rem, 4vw, 4.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: clamp(2rem, 3.5dvh, 3.5rem);
+    column-gap: clamp(1.5rem, 3vw, 3rem);
     inline-size: 100%;
-    max-inline-size: 82rem;
-    padding-block: clamp(3rem, 9dvh, 6.5rem) clamp(2rem, 5dvh, 3.5rem);
-    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    padding-block: clamp(3rem, 8dvh, 6rem) clamp(2rem, 4.5dvh, 3.5rem);
+    padding-inline: clamp(2rem, 6vw, 7rem);
     color: var(--color-background);
     text-align: center;
 }
@@ -378,15 +377,14 @@ footer::before {
 }
 
 footer > :not(:last-child) {
+    flex: 0 1 auto;
+    min-inline-size: clamp(0px, calc((56rem - 100vw) * 999), 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    justify-self: stretch;
     gap: clamp(1rem, 1.8vw, 1.35rem);
-    inline-size: 100%;
     padding-inline-start: 0;
-    min-inline-size: 0;
     text-align: center;
 }
 
@@ -424,7 +422,7 @@ footer address p,
 footer a[href] {
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
     line-height: 1.65;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
 }
 
 footer address {
@@ -447,18 +445,16 @@ footer a[href]:hover {
 }
 
 footer > p:last-child {
-    grid-column: 1 / -1;
-    justify-self: stretch;
+    flex: 1 0 100%;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     inline-size: 100%;
-    max-inline-size: 82rem;
     gap: var(--space-2xs);
     padding-block-start: var(--space-l);
-    padding-inline: clamp(1.5rem, 4vw, 3rem);
+    padding-inline: 0;
     border-block-start: 1px solid rgba(255, 255, 255, 0.2);
     font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
 }

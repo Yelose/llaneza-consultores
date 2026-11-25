@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --header-offset: 4.5rem;
 }
 
@@ -87,7 +87,7 @@ main.legal > section {
 }
 
 main.legal > section:last-child {
-    padding-block-end: 0;
+    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
 }
 
 main.legal > section h2 {

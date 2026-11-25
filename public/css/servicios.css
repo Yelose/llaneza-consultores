@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --header-offset: 4.5rem;
 }
 
@@ -85,16 +85,16 @@ main > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-block-size: calc(100dvh - var(--header-offset));
+    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100dvh - var(--header-offset)));
     gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block: clamp(2rem, 3.5dvh, 3.5rem);
+    padding-block: clamp(4.5rem, 7dvh, 6rem);
 }
 
 main > section:last-child {
-    padding-block-end: 0;
+    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
 }
 
-/* Mismo tamaño de título H2 y párrafo general que en Inicio */
+/* Mismo tamaÃ±o de tÃ­tulo H2 y pÃ¡rrafo general que en Inicio */
 main > section > h2 {
     padding-block-end: 0;
     font-size: var(--fs-section-title);
@@ -114,7 +114,7 @@ main > section > p {
     text-wrap: balance;
 }
 
-/* Mismos tamaños de subtítulo H3 y texto P de tarjeta que en Inicio */
+/* Mismos tamaÃ±os de subtÃ­tulo H3 y texto P de tarjeta que en Inicio */
 main > section article h3 {
     max-inline-size: 12em;
     min-block-size: 2.6em;
@@ -140,8 +140,8 @@ main > section[aria-labelledby="servicio-destacados"] {
     position: relative;
     align-items: center;
     gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block-start: clamp(2rem, 3.5dvh, 3.5rem);
-    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
+    padding-block-start: clamp(4.5rem, 7dvh, 6rem);
+    padding-block-end: calc(3rem + clamp(4.5rem, 7dvh, 6rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
 }
@@ -176,7 +176,7 @@ main > section[aria-labelledby="servicio-destacados"]::after {
 
 main > section[aria-labelledby="servicio-destacados"] > div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, clamp(11rem, calc((60rem - 100vw) * 999), 19rem)), 1fr));
     align-items: start;
     column-gap: 0;
     row-gap: clamp(2rem, 4vw, 3.25rem);

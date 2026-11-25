@@ -1,15 +1,15 @@
-:root {
+﻿:root {
     --header-offset: 4.5rem;
 }
 
-:where(body[data-hero]) > div {
+:where(body[data-hero])>div {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
     block-size: 100dvh;
     max-block-size: 100dvh;
 }
 
-:where(body[data-hero]) > div > picture {
+:where(body[data-hero])>div>picture {
     grid-column: 1;
     grid-row: 1;
     inline-size: 100%;
@@ -18,7 +18,7 @@
     overflow: hidden;
 }
 
-:where(body[data-hero]) > div > picture img {
+:where(body[data-hero])>div>picture img {
     inline-size: 100%;
     block-size: 100%;
     max-inline-size: none;
@@ -26,7 +26,7 @@
     object-position: center;
 }
 
-:where(body[data-hero]) > div > section {
+:where(body[data-hero])>div>section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +40,7 @@
     text-align: center;
 }
 
-:where(body[data-hero]) > div h1 {
+:where(body[data-hero])>div h1 {
     max-inline-size: 44rem;
     font-size: clamp(2.25rem, 5vw, 3.5rem);
     line-height: 1.15;
@@ -48,14 +48,14 @@
     text-wrap: balance;
 }
 
-:where(body[data-hero]) > div > section > p {
+:where(body[data-hero])>div>section>p {
     max-inline-size: 60rem;
     font-size: clamp(1.125rem, 2.2vw, 1.5rem);
     color: #000000;
     text-wrap: balance;
 }
 
-:where(body[data-hero]) > div > section > a[data-type="primary"] {
+:where(body[data-hero])>div>section>a[data-type="primary"] {
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
     color: var(--color-background);
@@ -80,27 +80,27 @@ main {
     padding-block-start: 0;
 }
 
-main > section {
+main>section {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-block-size: calc(100dvh - var(--header-offset));
+    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100dvh - var(--header-offset)));
     gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block: clamp(2rem, 3.5dvh, 3.5rem);
+    padding-block: clamp(4.5rem, 7dvh, 6rem);
 }
 
-main > section:last-child {
-    padding-block-end: 0;
+main>section:last-child {
+    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
 }
 
-/* Sección 1: LLANEZA CONSULTORES + línea de texto en 100% propio */
-main > section[aria-labelledby="presentacion-contacto-titulo"] {
+/* SecciÃ³n 1: LLANEZA CONSULTORES + lÃ­nea de texto en 100% propio */
+main>section[aria-labelledby="presentacion-contacto-titulo"] {
     align-items: center;
     text-align: center;
 }
 
-main > section[aria-labelledby="presentacion-contacto-titulo"] > h2 {
+main>section[aria-labelledby="presentacion-contacto-titulo"]>h2 {
     font-size: var(--fs-section-title);
     font-weight: var(--font-weight-bold);
     line-height: 1.2;
@@ -109,7 +109,7 @@ main > section[aria-labelledby="presentacion-contacto-titulo"] > h2 {
     text-wrap: balance;
 }
 
-main > section[aria-labelledby="presentacion-contacto-titulo"] > p {
+main>section[aria-labelledby="presentacion-contacto-titulo"]>p {
     max-inline-size: 90rem;
     font-size: var(--fs-section-lead);
     line-height: 1.65;
@@ -117,34 +117,32 @@ main > section[aria-labelledby="presentacion-contacto-titulo"] > p {
     text-wrap: balance;
 }
 
-/* Sección 2: Datos + horario en 100% propio con líneas divisorias azules */
-main > section[aria-labelledby="datos-empresa-titulo"] {
+/* SecciÃ³n 2: Datos + horario en 100% propio con lÃ­neas divisorias azules */
+main>section[aria-labelledby="datos-empresa-titulo"] {
     position: relative;
     align-items: center;
-    padding-block-start: clamp(2rem, 3.5dvh, 3.5rem);
-    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
+    padding-block-start: clamp(4.5rem, 7dvh, 6rem);
+    padding-block-end: calc(3rem + clamp(4.5rem, 7dvh, 6rem));
     padding-inline: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"]::before {
+main>section[aria-labelledby="datos-empresa-titulo"]::before {
     content: "";
     position: absolute;
     inset-inline-start: 0;
     inset-block-start: 0;
     inset-block-end: calc(3rem - 0.125rem);
     inline-size: clamp(1.25rem, 2.2vw, 2.25rem);
-    background: linear-gradient(
-        to right,
-        var(--color-primary) 0%,
-        var(--color-primary) 35%,
-        transparent 35%,
-        transparent 65%,
-        var(--color-primary) 65%,
-        var(--color-primary) 100%
-    );
+    background: linear-gradient(to right,
+            var(--color-primary) 0%,
+            var(--color-primary) 35%,
+            transparent 35%,
+            transparent 65%,
+            var(--color-primary) 65%,
+            var(--color-primary) 100%);
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"]::after {
+main>section[aria-labelledby="datos-empresa-titulo"]::after {
     content: "";
     position: absolute;
     inset-inline: 0;
@@ -154,16 +152,20 @@ main > section[aria-labelledby="datos-empresa-titulo"]::after {
     z-index: 1;
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] > div {
+main>section[aria-labelledby="datos-empresa-titulo"]>div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
     justify-content: center;
-    gap: clamp(2rem, 4vw, 3.25rem);
-    inline-size: min(100%, 76rem);
+    justify-items: center;
+    align-items: start;
+    gap: clamp(2rem, 4vw, 4rem);
+    inline-size: 100%;
+    max-inline-size: 82rem;
+    align-self: center;
+    /* si el padre es flex column */
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] > div > section {
+main>section[aria-labelledby="datos-empresa-titulo"]>div>section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,18 +175,18 @@ main > section[aria-labelledby="datos-empresa-titulo"] > div > section {
     min-inline-size: 0;
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] h3 {
+main>section[aria-labelledby="datos-empresa-titulo"] h3 {
     font-size: var(--fs-card-title);
     font-weight: var(--font-weight-light);
     line-height: 1.3;
     color: var(--color-primary);
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] address {
+main>section[aria-labelledby="datos-empresa-titulo"] address {
     font-style: normal;
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] ul {
+main>section[aria-labelledby="datos-empresa-titulo"] ul {
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
@@ -194,28 +196,28 @@ main > section[aria-labelledby="datos-empresa-titulo"] ul {
     color: var(--color-tertiary);
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] li span {
+main>section[aria-labelledby="datos-empresa-titulo"] li span {
     display: block;
     padding-inline-start: 1.25rem;
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] a {
+main>section[aria-labelledby="datos-empresa-titulo"] a {
     color: var(--color-tertiary);
     text-decoration: none;
     overflow-wrap: anywhere;
 }
 
-main > section[aria-labelledby="datos-empresa-titulo"] a:hover {
+main>section[aria-labelledby="datos-empresa-titulo"] a:hover {
     color: var(--color-primary);
     text-decoration: underline;
 }
 
-/* Sección 3: Mapa limpio en 100% propio, sin líneas divisorias azules */
-main > section[aria-labelledby="ubicacion-titulo"] {
+/* SecciÃ³n 3: Mapa limpio en 100% propio, sin lÃ­neas divisorias azules */
+main>section[aria-labelledby="ubicacion-titulo"] {
     align-items: center;
 }
 
-main > section[aria-labelledby="ubicacion-titulo"] > div {
+main>section[aria-labelledby="ubicacion-titulo"]>div {
     max-inline-size: 86rem;
     inline-size: 100%;
     block-size: clamp(22rem, 52dvh, 38rem);
@@ -224,13 +226,13 @@ main > section[aria-labelledby="ubicacion-titulo"] > div {
     overflow: hidden;
 }
 
-main > section[aria-labelledby="ubicacion-titulo"] iframe {
+main>section[aria-labelledby="ubicacion-titulo"] iframe {
     inline-size: 100%;
     block-size: 100%;
     border: 0;
 }
 
-main > section[aria-labelledby="ubicacion-titulo"] > a[data-type="primary"] {
+main>section[aria-labelledby="ubicacion-titulo"]>a[data-type="primary"] {
     align-self: center;
     padding-block: var(--space-xs);
     padding-inline: var(--space-l);

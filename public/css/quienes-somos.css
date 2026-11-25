@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     --header-offset: 4.5rem;
 }
 
@@ -74,13 +74,13 @@ main > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-block-size: calc(100dvh - var(--header-offset));
+    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100dvh - var(--header-offset)));
     gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block: clamp(2rem, 3.5dvh, 3.5rem);
+    padding-block: clamp(4.5rem, 7dvh, 6rem);
 }
 
 main > section:last-child {
-    padding-block-end: 0;
+    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
 }
 
 main > section > h2 {
@@ -153,8 +153,8 @@ main > section:nth-of-type(2) {
     position: relative;
     background-color: var(--color-background);
     color: var(--color-text);
-    padding-block-start: clamp(2rem, 3.5dvh, 3.5rem);
-    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
+    padding-block-start: clamp(4.5rem, 7dvh, 6rem);
+    padding-block-end: calc(3rem + clamp(4.5rem, 7dvh, 6rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
 }
