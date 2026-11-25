@@ -62,19 +62,25 @@
 }
 
 main {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding-block: 0;
+    padding-block-start: 0;
 }
 
 main > section {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-block-size: calc(100dvh - var(--header-offset));
-    gap: clamp(1.25rem, 4dvh, var(--space-xl));
-    padding-block: clamp(1rem, 3dvh, var(--space-l));
+    gap: clamp(1rem, 2.5dvh, 2rem);
+    padding-block: clamp(2rem, 3.5dvh, 3.5rem);
+}
+
+main > section:last-child {
+    padding-block-end: 0;
 }
 
 /* Mismo tamaño de título H2 y párrafo general en todas las secciones */
@@ -120,9 +126,9 @@ main > section article p {
 main > section[aria-labelledby="inicio-servicios"] {
     position: relative;
     align-items: center;
-    gap: clamp(0.75rem, 2.5dvh, 2rem);
-    padding-block-start: clamp(0.5rem, 1.5dvh, 1.25rem);
-    padding-block-end: calc(3rem + clamp(0.5rem, 1.5dvh, 1.25rem));
+    gap: clamp(1rem, 2.5dvh, 2rem);
+    padding-block-start: clamp(2rem, 3.5dvh, 3.5rem);
+    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
 }
@@ -160,7 +166,8 @@ main > section[aria-labelledby="inicio-quienes-somos"]::after {
 main > section[aria-labelledby="inicio-servicios"] > div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-    gap: clamp(2rem, 4.5vw, 4.5rem);
+    align-items: start;
+    gap: clamp(2rem, 4vw, 3.25rem);
     max-inline-size: 90rem;
     inline-size: 100%;
 }
@@ -169,24 +176,32 @@ main > section[aria-labelledby="inicio-servicios"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(0.25rem, 1dvh, var(--space-2xs));
+    justify-content: flex-start;
+    gap: clamp(0.5rem, 1.2vw, 0.875rem);
 }
 
 main > section[aria-labelledby="inicio-servicios"] article a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(0.25rem, 1dvh, var(--space-2xs));
+    justify-content: flex-start;
+    gap: clamp(0.5rem, 1.2vw, 0.875rem);
     color: var(--color-primary);
     text-decoration: none;
     text-align: center;
 }
 
 main > section[aria-labelledby="inicio-servicios"] article img {
-    block-size: clamp(11rem, min(22vw, 36dvh), 21rem);
+    block-size: clamp(11.5rem, 18vw, 15rem);
     inline-size: auto;
+    max-inline-size: 100%;
     object-fit: contain;
     mix-blend-mode: multiply;
+}
+
+main > section[aria-labelledby="inicio-servicios"] article img[src*="asesoria-fiscal"] {
+    transform: scale(0.91);
+    transform-origin: center;
 }
 
 main > section[aria-labelledby="inicio-servicios"] article h3 {
@@ -201,8 +216,7 @@ main > section[aria-labelledby="inicio-servicios"] article a:hover h3 {
 main > section[aria-labelledby="inicio-gestiones"] {
     align-items: center;
     justify-content: center;
-    gap: clamp(1.25rem, 4dvh, 2.75rem);
-    padding-block: clamp(1rem, 3dvh, 2.25rem);
+    gap: clamp(1rem, 2.5dvh, 2rem);
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > p {
@@ -212,7 +226,8 @@ main > section[aria-labelledby="inicio-gestiones"] > p {
 main > section[aria-labelledby="inicio-gestiones"] > div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-    gap: clamp(1.25rem, 2.5vw, var(--space-l));
+    align-items: start;
+    gap: clamp(2rem, 4vw, 3.25rem);
     max-inline-size: 90rem;
     inline-size: 100%;
 }
@@ -221,25 +236,26 @@ main > section[aria-labelledby="inicio-gestiones"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(0.5rem, 1.5dvh, var(--space-s));
-    padding-block: clamp(1rem, 2.5dvh, var(--space-l));
+    justify-content: flex-start;
+    gap: clamp(0.5rem, 1.2vw, 0.875rem);
+    padding-block: clamp(1rem, 2.5vw, var(--space-l));
     padding-inline: clamp(1.25rem, 2vw, var(--space-m));
     border: 0.0625rem solid var(--color-border);
-    block-size: 100%;
 }
 
 main > section[aria-labelledby="inicio-gestiones"] article img {
-    block-size: clamp(4.75rem, min(8.5vw, 13.5dvh), 7.75rem);
+    block-size: clamp(8.87rem, 13.88vw, 11.57rem);
     inline-size: auto;
+    max-inline-size: 100%;
     object-fit: contain;
     mix-blend-mode: multiply;
 }
 
 main > section[aria-labelledby="inicio-quienes-somos"] {
     position: relative;
-    justify-content: space-evenly;
-    gap: clamp(1rem, 2.5dvh, var(--space-m));
-    padding-block-end: calc(3rem + clamp(1rem, 2.5dvh, 2rem));
+    justify-content: center;
+    gap: clamp(1rem, 2.5dvh, 2rem);
+    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     text-align: center;
 }
@@ -249,7 +265,7 @@ main > section[aria-labelledby="inicio-quienes-somos"] > a {
 }
 
 main > section[aria-labelledby="inicio-cta"] {
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
 }
 

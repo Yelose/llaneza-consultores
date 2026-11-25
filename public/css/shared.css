@@ -23,6 +23,8 @@
     --space-l: 2rem;
     --space-xl: 3rem;
     --space-2xl: 4rem;
+    --space-before-footer: clamp(1.5rem, 2.5vw, 2.5rem);
+    --header-offset: 4.5rem;
 
     --radius-s: 0.25rem;
     --transition-fast: 150ms ease;
@@ -47,6 +49,8 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     min-block-size: 100dvh;
     overflow-x: clip;
     font-family: var(--font-family);
@@ -60,6 +64,15 @@ body {
 h1 {
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
+}
+
+main {
+    box-sizing: border-box;
+    padding-block-end: var(--space-before-footer);
+}
+
+main > section {
+    box-sizing: border-box;
 }
 
 main > * {
@@ -254,14 +267,14 @@ header nav > ul > li > span::after {
     display: block;
     inline-size: 100%;
     block-size: 0.5rem;
-    border-inline-start: 0.125rem solid transparent;
+    border-inline-start: 0.2rem solid transparent;
     background-image: linear-gradient(
         var(--color-secondary),
         var(--color-secondary)
     );
     background-repeat: no-repeat;
     background-position: 0 100%;
-    background-size: 0 0.125rem;
+    background-size: 0 0.2rem;
     transition:
         border-inline-start-color var(--transition-fast),
         background-size var(--transition-medium);
@@ -278,7 +291,7 @@ header nav > ul > li:has(a[aria-current="page"]) > span::after,
 header nav > ul > li > a:hover::after,
 header nav > ul > li:hover > span::after {
     border-inline-start-color: var(--color-secondary);
-    background-size: 100% 0.125rem;
+    background-size: 100% 0.2rem;
 }
 
 header nav ul ul a {
@@ -336,17 +349,32 @@ header nav ul ul a[aria-current="page"] {
 }
 
 footer {
+    position: relative;
+    z-index: 0;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: auto auto;
-    align-content: start;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    justify-content: center;
+    justify-items: stretch;
     align-items: start;
-    gap: var(--space-l);
+    align-self: center;
+    gap: clamp(2rem, 4vw, 4.5rem);
+    inline-size: 100%;
+    max-inline-size: 82rem;
     padding-block: clamp(3rem, 9dvh, 6.5rem) clamp(2rem, 5dvh, 3.5rem);
-    padding-inline: clamp(var(--space-m), 5vw, var(--space-2xl));
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
     color: var(--color-background);
-    background-color: var(--color-tertiary);
     text-align: center;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset-block: 0;
+    inset-inline-start: 50%;
+    inline-size: 100vw;
+    background-color: var(--color-tertiary);
+    transform: translateX(-50%);
 }
 
 footer > :not(:last-child) {
@@ -354,8 +382,12 @@ footer > :not(:last-child) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: var(--space-s);
+    justify-self: stretch;
+    gap: clamp(1rem, 1.8vw, 1.35rem);
+    inline-size: 100%;
+    padding-inline-start: 0;
     min-inline-size: 0;
+    text-align: center;
 }
 
 footer h2 {
@@ -368,9 +400,18 @@ footer ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-3xs);
+    gap: clamp(0.65rem, 1.2vw, 0.9rem);
     list-style: none;
     padding: 0;
+    padding-inline-start: 0;
+    text-align: center;
+}
+
+footer li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
 }
 
 footer li span {
@@ -382,14 +423,18 @@ footer address,
 footer address p,
 footer a[href] {
     font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.65;
+    overflow-wrap: anywhere;
 }
 
 footer address {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-3xs);
+    gap: clamp(0.65rem, 1.2vw, 0.9rem);
+    padding-inline-start: 0;
     font-style: normal;
+    text-align: center;
 }
 
 footer a[href] {
@@ -403,12 +448,17 @@ footer a[href]:hover {
 
 footer > p:last-child {
     grid-column: 1 / -1;
+    justify-self: stretch;
+    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    inline-size: 100%;
+    max-inline-size: 82rem;
     gap: var(--space-2xs);
     padding-block-start: var(--space-l);
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
     border-block-start: 1px solid rgba(255, 255, 255, 0.2);
     font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem);
 }

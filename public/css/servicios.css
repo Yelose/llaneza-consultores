@@ -73,19 +73,25 @@
 }
 
 main {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding-block: 0;
+    padding-block-start: 0;
 }
 
 main > section {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-block-size: calc(100dvh - var(--header-offset));
-    gap: clamp(1.5rem, 4.5dvh, 3.25rem);
-    padding-block: clamp(1rem, 3dvh, var(--space-l));
+    gap: clamp(1rem, 2.5dvh, 2rem);
+    padding-block: clamp(2rem, 3.5dvh, 3.5rem);
+}
+
+main > section:last-child {
+    padding-block-end: 0;
 }
 
 /* Mismo tamaño de título H2 y párrafo general que en Inicio */
@@ -133,9 +139,9 @@ main > section article p {
 main > section[aria-labelledby="servicio-destacados"] {
     position: relative;
     align-items: center;
-    gap: clamp(0.75rem, 2.5dvh, 2rem);
-    padding-block-start: clamp(0.5rem, 1.5dvh, 1.25rem);
-    padding-block-end: calc(3rem + clamp(0.5rem, 1.5dvh, 1.25rem));
+    gap: clamp(1rem, 2.5dvh, 2rem);
+    padding-block-start: clamp(2rem, 3.5dvh, 3.5rem);
+    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
 }
@@ -170,9 +176,10 @@ main > section[aria-labelledby="servicio-destacados"]::after {
 
 main > section[aria-labelledby="servicio-destacados"] > div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.5rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    align-items: start;
     column-gap: 0;
-    row-gap: clamp(1.5rem, 3.5dvh, var(--space-xl));
+    row-gap: clamp(2rem, 4vw, 3.25rem);
     max-inline-size: 94rem;
     inline-size: 100%;
 }
@@ -181,37 +188,23 @@ main > section[aria-labelledby="servicio-destacados"] article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: clamp(0.25rem, 1dvh, var(--space-2xs));
+    justify-content: flex-start;
+    gap: clamp(0.5rem, 1.2vw, 0.875rem);
     padding-inline: clamp(0.875rem, 2vw, 2rem);
-}
-
-main > section[aria-labelledby="servicio-destacados"] article + article {
-    background-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        transparent 10%,
-        var(--color-border) 10%,
-        var(--color-border) 95%,
-        transparent 95%
-    );
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: 0.0625rem 100%;
 }
 
 /* Base unificada (Laboral y Contable) */
 main > section[aria-labelledby="servicio-destacados"] article img {
-    block-size: clamp(18rem, 40dvh, 30rem);
+    block-size: clamp(11.5rem, 18vw, 15rem);
     inline-size: auto;
     max-inline-size: 100%;
     object-fit: contain;
     mix-blend-mode: multiply;
-    padding-block-end: clamp(0.125rem, 0.5dvh, var(--space-3xs));
 }
 
-/* Ajuste contenido solo en Fiscal */
-html:has(link[rel="canonical"][href*="fiscal.html"]) main > section[aria-labelledby="servicio-destacados"] article img {
-    block-size: clamp(14rem, 30dvh, 23rem);
+main > section[aria-labelledby="servicio-destacados"] article img[src*="/fiscal/"] {
+    transform: scale(0.84);
+    transform-origin: center;
 }
 
 main > section[aria-labelledby="servicio-cta"] ul {

@@ -73,19 +73,25 @@
 }
 
 main {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding-block: 0;
+    padding-block-start: 0;
 }
 
 main > section {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-block-size: calc(100dvh - var(--header-offset));
-    gap: clamp(1.5rem, 4dvh, var(--space-xl));
-    padding-block: clamp(1.5rem, 4dvh, var(--space-xl));
+    gap: clamp(1rem, 2.5dvh, 2rem);
+    padding-block: clamp(2rem, 3.5dvh, 3.5rem);
+}
+
+main > section:last-child {
+    padding-block-end: 0;
 }
 
 /* Sección 1: LLANEZA CONSULTORES + línea de texto en 100% propio */
@@ -104,7 +110,7 @@ main > section[aria-labelledby="presentacion-contacto-titulo"] > h2 {
 }
 
 main > section[aria-labelledby="presentacion-contacto-titulo"] > p {
-    max-inline-size: 68rem;
+    max-inline-size: 90rem;
     font-size: var(--fs-section-lead);
     line-height: 1.65;
     color: var(--color-tertiary);
@@ -115,10 +121,9 @@ main > section[aria-labelledby="presentacion-contacto-titulo"] > p {
 main > section[aria-labelledby="datos-empresa-titulo"] {
     position: relative;
     align-items: center;
-    padding-block-start: clamp(1.5rem, 4dvh, var(--space-xl));
-    padding-block-end: calc(3rem + clamp(1.5rem, 4dvh, var(--space-xl)));
-    padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
-    padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
+    padding-block-start: clamp(2rem, 3.5dvh, 3.5rem);
+    padding-block-end: calc(3rem + clamp(2rem, 3.5dvh, 3.5rem));
+    padding-inline: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
 }
 
 main > section[aria-labelledby="datos-empresa-titulo"]::before {
@@ -152,17 +157,19 @@ main > section[aria-labelledby="datos-empresa-titulo"]::after {
 main > section[aria-labelledby="datos-empresa-titulo"] > div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    align-items: start;
     justify-content: center;
-    gap: clamp(2rem, 4vw, var(--space-2xl));
-    max-inline-size: 76rem;
-    inline-size: 100%;
+    gap: clamp(2rem, 4vw, 3.25rem);
+    inline-size: min(100%, 76rem);
 }
 
 main > section[aria-labelledby="datos-empresa-titulo"] > div > section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     gap: var(--space-m);
+    inline-size: 100%;
     min-inline-size: 0;
 }
 
