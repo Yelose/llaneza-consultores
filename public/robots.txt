@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://llanezaconsultores.com/sitemap.xml
+Sitemap: https://llaneza-consultores.web.app/sitemap.xml

@@ -3,14 +3,14 @@
 > Asesoría fiscal, laboral y contable en El Entrego (Asturias) con más de 40 años de experiencia para empresas, autónomos y particulares de la cuenca del Nalón.
 
 ## Servicios
-- [Asesoría Fiscal](https://llanezaconsultores.com/fiscal.html): Impuestos para autónomos y sociedades, campaña de la Renta, alquileres, sucesiones y plusvalías.
-- [Asesoría Laboral](https://llanezaconsultores.com/laboral.html): Nóminas, contratos, altas y seguros sociales.
-- [Asesoría Contable](https://llanezaconsultores.com/contable.html): Libros oficiales, balances y cuentas anuales.
+- [Asesoría Fiscal](https://llaneza-consultores.web.app/fiscal.html): Impuestos para autónomos y sociedades, campaña de la Renta, alquileres, sucesiones y plusvalías.
+- [Asesoría Laboral](https://llaneza-consultores.web.app/laboral.html): Nóminas, contratos, altas y seguros sociales.
+- [Asesoría Contable](https://llaneza-consultores.web.app/contable.html): Libros oficiales, balances y cuentas anuales.
 - Gestiones administrativas y seguros (Agencia MAPFRE, Tráfico y Vehículos, trámites oficiales).
 
 ## Información de contacto
-- [Quiénes somos](https://llanezaconsultores.com/quienes-somos.html)
-- [Contacto](https://llanezaconsultores.com/contacto.html)
+- [Quiénes somos](https://llaneza-consultores.web.app/quienes-somos.html)
+- [Contacto](https://llaneza-consultores.web.app/contacto.html)
 - Dirección: C/ Menéndez Pelayo 2, 1ºB, 33940 El Entrego, Asturias
 - Teléfono: +34 985 66 21 22
 - Email: info@llanezaconsultores.com
