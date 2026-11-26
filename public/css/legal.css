@@ -1,12 +1,12 @@
-﻿:root {
+:root {
     --header-offset: 4.5rem;
 }
 
 :where(body[data-hero]) > div {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
-    block-size: 65dvh;
-    max-block-size: 65dvh;
+    block-size: 65svh;
+    max-block-size: 65svh;
 }
 
 :where(body[data-hero]) > div > picture {
@@ -33,7 +33,7 @@
     align-items: center;
     grid-column: 1;
     grid-row: 1;
-    gap: clamp(0.75rem, 2.5dvh, var(--space-m));
+    gap: clamp(0.75rem, 2.5svh, var(--space-m));
     padding-block: var(--header-offset) var(--space-l);
     padding-inline: clamp(var(--space-l), 4vw, var(--space-xl));
     min-block-size: 0;
@@ -87,7 +87,7 @@ main.legal > section {
 }
 
 main.legal > section:last-child {
-    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
+    padding-block-end: clamp(4.5rem, 7svh, 6rem);
 }
 
 main.legal > section h2 {

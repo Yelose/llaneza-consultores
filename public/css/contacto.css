@@ -1,12 +1,12 @@
-﻿:root {
+:root {
     --header-offset: 4.5rem;
 }
 
 :where(body[data-hero])>div {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
-    block-size: 100dvh;
-    max-block-size: 100dvh;
+    block-size: 100svh;
+    max-block-size: 100svh;
 }
 
 :where(body[data-hero])>div>picture {
@@ -33,7 +33,7 @@
     align-items: center;
     grid-column: 1;
     grid-row: 1;
-    gap: clamp(1rem, 3dvh, var(--space-m));
+    gap: clamp(1rem, 3svh, var(--space-m));
     padding-block: var(--header-offset) var(--space-l);
     padding-inline: clamp(var(--space-l), 4vw, var(--space-xl));
     min-block-size: 0;
@@ -85,13 +85,13 @@ main>section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100dvh - var(--header-offset)));
-    gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block: clamp(4.5rem, 7dvh, 6rem);
+    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100svh - var(--header-offset)));
+    gap: clamp(1rem, 2.5svh, 2rem);
+    padding-block: clamp(4.5rem, 7svh, 6rem);
 }
 
 main>section:last-child {
-    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
+    padding-block-end: clamp(4.5rem, 7svh, 6rem);
 }
 
 /* SecciÃ³n 1: LLANEZA CONSULTORES + lÃ­nea de texto en 100% propio */
@@ -121,8 +121,8 @@ main>section[aria-labelledby="presentacion-contacto-titulo"]>p {
 main>section[aria-labelledby="datos-empresa-titulo"] {
     position: relative;
     align-items: center;
-    padding-block-start: clamp(4.5rem, 7dvh, 6rem);
-    padding-block-end: calc(3rem + clamp(4.5rem, 7dvh, 6rem));
+    padding-block-start: clamp(4.5rem, 7svh, 6rem);
+    padding-block-end: calc(3rem + clamp(4.5rem, 7svh, 6rem));
     padding-inline: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
 }
 
@@ -220,7 +220,7 @@ main>section[aria-labelledby="ubicacion-titulo"] {
 main>section[aria-labelledby="ubicacion-titulo"]>div {
     max-inline-size: 86rem;
     inline-size: 100%;
-    block-size: clamp(22rem, 52dvh, 38rem);
+    block-size: clamp(22rem, 52svh, 38rem);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-s);
     overflow: hidden;

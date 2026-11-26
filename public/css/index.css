@@ -1,12 +1,12 @@
-﻿:root {
+:root {
     --header-offset: 4.5rem;
 }
 
 :where(body[data-hero]) > div {
     display: grid;
     grid-template-rows: minmax(0, 1fr);
-    block-size: 100dvh;
-    max-block-size: 100dvh;
+    block-size: 100svh;
+    max-block-size: 100svh;
 }
 
 :where(body[data-hero]) > div > picture {
@@ -33,7 +33,7 @@
     align-items: center;
     grid-column: 1;
     grid-row: 1;
-    gap: clamp(1rem, 3dvh, var(--space-m));
+    gap: clamp(1rem, 3svh, var(--space-m));
     padding-block: var(--header-offset) var(--space-l);
     padding-inline: clamp(var(--space-l), 4vw, var(--space-xl));
     min-block-size: 0;
@@ -74,13 +74,13 @@ main > section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100dvh - var(--header-offset)));
-    gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block: clamp(4.5rem, 7dvh, 6rem);
+    min-block-size: clamp(0px, calc((100vw - 48rem) * 999), calc(100svh - var(--header-offset)));
+    gap: clamp(1rem, 2.5svh, 2rem);
+    padding-block: clamp(4.5rem, 7svh, 6rem);
 }
 
 main > section:last-child {
-    padding-block-end: clamp(4.5rem, 7dvh, 6rem);
+    padding-block-end: clamp(4.5rem, 7svh, 6rem);
 }
 
 /* Mismo tamaÃ±o de tÃ­tulo H2 y pÃ¡rrafo general en todas las secciones */
@@ -126,9 +126,9 @@ main > section article p {
 main > section[aria-labelledby="inicio-servicios"] {
     position: relative;
     align-items: center;
-    gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block-start: clamp(4.5rem, 7dvh, 6rem);
-    padding-block-end: calc(3rem + clamp(4.5rem, 7dvh, 6rem));
+    gap: clamp(1rem, 2.5svh, 2rem);
+    padding-block-start: clamp(4.5rem, 7svh, 6rem);
+    padding-block-end: calc(3rem + clamp(4.5rem, 7svh, 6rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     padding-inline-end: clamp(var(--space-m), 3.5vw, var(--space-2xl));
 }
@@ -219,7 +219,7 @@ main > section[aria-labelledby="inicio-servicios"] article a:hover h3 {
 main > section[aria-labelledby="inicio-gestiones"] {
     align-items: center;
     justify-content: center;
-    gap: clamp(1rem, 2.5dvh, 2rem);
+    gap: clamp(1rem, 2.5svh, 2rem);
 }
 
 main > section[aria-labelledby="inicio-gestiones"] > p {
@@ -260,8 +260,8 @@ main > section[aria-labelledby="inicio-gestiones"] article img {
 main > section[aria-labelledby="inicio-quienes-somos"] {
     position: relative;
     justify-content: center;
-    gap: clamp(1rem, 2.5dvh, 2rem);
-    padding-block-end: calc(3rem + clamp(4.5rem, 7dvh, 6rem));
+    gap: clamp(1rem, 2.5svh, 2rem);
+    padding-block-end: calc(3rem + clamp(4.5rem, 7svh, 6rem));
     padding-inline-start: calc(clamp(1.25rem, 2.2vw, 2.25rem) + clamp(var(--space-m), 3.5vw, var(--space-2xl)));
     text-align: center;
 }

@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --color-primary: #002F6C;
     --color-secondary: #0032A0;
     --color-tertiary: #3F4444;
@@ -30,10 +30,10 @@
     --transition-fast: 150ms ease;
     --transition-medium: 300ms ease;
 
-    --fs-section-title: clamp(2rem, min(3.4vw, 5.5dvh), 3.15rem);
-    --fs-section-lead: clamp(1.1875rem, min(1.8vw, 3.1dvh), 1.5rem);
-    --fs-card-title: clamp(1.375rem, min(1.9vw, 3.3dvh), 1.875rem);
-    --fs-card-text: clamp(1.125rem, min(1.55vw, 2.75dvh), 1.3125rem);
+    --fs-section-title: clamp(2rem, min(3.4vw, 5.5svh), 3.15rem);
+    --fs-section-lead: clamp(1.1875rem, min(1.8vw, 3.1svh), 1.5rem);
+    --fs-card-title: clamp(1.375rem, min(1.9vw, 3.3svh), 1.875rem);
+    --fs-card-text: clamp(1.125rem, min(1.55vw, 2.75svh), 1.3125rem);
 }
 
 *,
@@ -51,7 +51,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    min-block-size: 100dvh;
+    min-block-size: 100svh;
     overflow-x: clip;
     font-family: var(--font-family);
     font-size: 1.25rem;
@@ -356,10 +356,10 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    row-gap: clamp(2rem, 3.5dvh, 3.5rem);
+    row-gap: clamp(2rem, 3.5svh, 3.5rem);
     column-gap: clamp(1.5rem, 3vw, 3rem);
     inline-size: 100%;
-    padding-block: clamp(3rem, 8dvh, 6rem) clamp(2rem, 4.5dvh, 3.5rem);
+    padding-block: clamp(3rem, 8svh, 6rem) clamp(2rem, 4.5svh, 3.5rem);
     padding-inline: clamp(2rem, 6vw, 7rem);
     color: var(--color-background);
     text-align: center;
